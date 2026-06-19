@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>አዲስ ፍጥረት መግለጫ | 2ኛ ቆሮንቶስ 5፥17</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@500;700;900&family=Noto+Sans+Ethiopic:wght@400;500;600&display=swap');
+
+  :root{
+    --cream:#e7e0cb;
+    --ink:#3a4350;
+    --slate:#47515e;
+    --slate-deep:#3a4350;
+    --coral:#e0594a;
+    --bone:#ece6d4;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans Ethiopic', sans-serif;
+    background:var(--slate-deep);
+    color:var(--bone);
+  }
+
+  .display{
+    font-family:'Noto Serif Ethiopic', serif;
+    font-weight:900;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---- COVER ---- */
+  .cover{
+    background:var(--cream);
+    color:var(--ink);
+    min-height:100vh;
+    padding:8vh 6vw 7vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  .cover h1.big{
+    font-size:clamp(3.2rem, 14vw, 8.5rem);
+    line-height:0.92;
+    text-transform:uppercase;
+  }
+  .cover-row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-end;
+    gap:2vw;
+    margin:1.2rem 0;
+  }
+  .verse-ref-block{
+    font-size:clamp(1.6rem,5vw,2.6rem);
+    line-height:1.05;
+    text-transform:uppercase;
+  }
+  .blurb{
+    flex:1;
+    min-width:240px;
+    font-size:0.85rem;
+    line-height:1.55;
+    font-weight:500;
+    text-align:right;
+    max-width:340px;
+  }
+  .cover h2.sub{
+    font-size:clamp(2.6rem,9vw,5.5rem);
+    line-height:0.95;
+    text-transform:uppercase;
+    margin-top:0.4rem;
+  }
+  .cover-verse{
+    margin-top:2.2rem;
+    font-weight:700;
+    font-size:clamp(1rem,2.4vw,1.3rem);
+    line-height:1.6;
+    max-width:54ch;
+  }
+  .tamper{
+    position:absolute;
+    right:4vw;
+    top:42%;
+    width:min(38vw, 280px);
+    opacity:0.92;
+  }
+
+  /* ---- SECTIONS ---- */
+  section.page{
+    min-height:100vh;
+    padding:10vh 7vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  section.page h3.heading{
+    font-size:clamp(2.4rem,7vw,4.4rem);
+    text-transform:uppercase;
+    line-height:0.95;
+    margin-bottom:2.4rem;
+    color:var(--bone);
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.page.in-view h3.heading{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .lines{
+    max-width:64ch;
+  }
+  .lines p{
+    font-size:clamp(1.02rem,2.1vw,1.28rem);
+    line-height:1.85;
+    margin-bottom:1.3rem;
+    color:#d9d3bf;
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  section.page.in-view .lines p{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .lines p:nth-child(1){transition-delay:0.05s;}
+  .lines p:nth-child(2){transition-delay:0.12s;}
+  .lines p:nth-child(3){transition-delay:0.19s;}
+  .lines p:nth-child(4){transition-delay:0.26s;}
+  .lines p:nth-child(5){transition-delay:0.33s;}
+  .lines p:nth-child(6){transition-delay:0.4s;}
+  .lines p:nth-child(7){transition-delay:0.47s;}
+  .lines p:nth-child(8){transition-delay:0.54s;}
+
+  .lines p.tight{margin-bottom:0.35rem;}
+
+  section.page:nth-of-type(odd){background:var(--slate);}
+  section.page:nth-of-type(even){background:var(--slate-deep);}
+
+  .tag{
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:600;
+    margin-bottom:0.9rem;
+  }
+
+  .amen-final{
+    text-align:center;
+    background:var(--coral);
+    color:var(--cream);
+    padding:10vh 6vw;
+  }
+  .amen-final p.display{
+    font-size:clamp(2rem,7vw,3.6rem);
+    text-transform:uppercase;
+    margin-bottom:0.4rem;
+  }
+  .amen-final span{
+    font-size:0.9rem;
+    letter-spacing:0.08em;
+    opacity:0.85;
+  }
+
+  footer{
+    text-align:center;
+    padding:3rem 1rem;
+    background:var(--slate-deep);
+    color:#8a8f78;
+    font-size:0.78rem;
+    letter-spacing:0.03em;
+  }
+
+  @media (max-width: 640px){
+    .tamper{display:none;}
+    .blurb{text-align:right; margin-left:auto;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+    section.page h3.heading, .lines p{opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-grid">
+    <h1 class="big display">አዲስ</h1>
+    <div class="cover-row">
+      <div class="verse-ref-block display">2ኛ ቆሮ<br>5፥17</div>
+      <p class="blurb">በቅዱስ ቃል ላይ የተመሰረተ ኃይለኛ የጥዋት ጸሎት፣ ቀንዎን ከመጀመርዎ በፊት በአዲሱ ማንነትዎ ላይ ባለ እምነት ለመነሳት የሚረዳ። ቀንዎን ከመጀመርዎ በፊት እነዚህን እውነቶች ይናገሩ።</p>
+    </div>
+    <h1 class="big display">ፍጥረት</h1>
+    <h2 class="sub display">መግለጫ</h2>
+  </div>
+  <p class="cover-verse">ማንም በክርስቶስ ቢሆን አዲስ ፍጥረት ሆኗል፤ አሮጌው አልፏል፤ እነሆ አዲሱ መጥቷል!</p>
+</header>
+
+<section class="page">
+  <p class="tag">አንድ</p>
+  <h3 class="heading display">ምስጋና</h3>
+  <div class="lines">
+    <p>ኢየሱስ ሆይ፣ በክርስቶስ አዲስ ፍጥረት ስለሆንሁ አመሰግንሃለሁ። አሮጌው እንዳለፈ እና አዲሱ እንደመጣ አመሰግንሃለሁ። በኢየሱስ ስም በክርስቶስ ያለኝን አዲስ ማንነት እለብሳለሁ።</p>
+    <p>ሰውነቴን፣ ሥጋዬን፣ ነፍሴን በመንፈስ ማንነቴ ሥር አስገዛለሁ። በአዲሱ ተፈጥሮዬ ማንነት ሥር አስገዛዋለሁ።</p>
+    <p>የሕይወት ብርሃን በውስጤ ይኖራል። የሕይወት ብርሃን በአቶሞቼ ውስጥ በሞለክዩላር ደረጅ ይኖራል። ቅዱስ መንፈስ ከውስጤ ያበራል።</p>
+    <p>በኢየሱስ ስም አዲስ ፍጥረት ነኝ።</p>
+    <p class="tight">አሮጌውን ማንነት አወልቃለሁ።</p>
+    <p class="tight">አሮጌውን ሰው አወልቃለሁ።</p>
+    <p class="tight">ዕድሜ ልኬ እንደዚያ እንደሆንሁ እንዳምን የተደረግሁበትን ማንነት አወልቃለሁ።</p>
+    <p class="tight">አወልቄ አዲሱን ሰው እለብሳለሁ።</p>
+    <p>የእግዚአብሔርን ጽድቅ እለብሳለሁ።</p>
+  </div>
+</section>
+
+<section class="page">
+  <p class="tag">ሁለት</p>
+  <h3 class="heading display">ኃጢአት፣ ትዝታ እና ቁስል</h3>
+  <div class="lines">
+    <p>ሁሉም ትዝታዎች፣ ሁሉም ቁስሎች እና ሁሉም የኃጢአት ዑደቶች አዲስ ፍጥረት እንደሆንሁ ስናገር ይቆማሉ።</p>
+    <p>አዲሱን ማንነቴን ስለብስ ሁሉም የኃጢአት ዑደቶች ይቆማሉ።</p>
+    <p>የጽድቅን ልብስ ስለብስ ሁሉም የኃጢአት ዑደቶች ይቆማሉ።</p>
+    <p>የመዳንን ራስ ቁር እና በሰማያዊ ስፍራዎች ተቀምጬ የምገዛበትን ዘውድ ስለብስ ሁሉም የኃጢአት ዑደቶች ይቆማሉ።</p>
+    <p>በኢየሱስ ስም በኃይልና በሥልጣን እመላለሳለሁ።</p>
+    <p>እንደ አዲስ ፍጥረት እመላለሳለሁ።</p>
+    <p>ከእንግዲህ የምኖረው እኔ አይደለሁም፤ ክርስቶስ በእኔ ይኖራል።</p>
+    <p>በመንፈስ፣ አሁን በሰማያዊ ስፍራዎች ተቀምጫለሁ።</p>
+  </div>
+</section>
+
+<section class="page">
+  <p class="tag">ሦስት</p>
+  <h3 class="heading display">ከክርስቶስ ጋር ወራሽ</h3>
+  <div class="lines">
+    <p>ከክርስቶስ ጋር ወራሽ ነኝ። በአብ ቤት ያለውን ሁሉ የማግኘት ችሎታ አለኝ።</p>
+    <p>ፈውስን የማግኘት ችሎታ አለኝ፤ ስለዚህ በሰውነቴ ላይ ፈውስን አውጃለሁ።</p>
+    <p>አቅርቦትንና ገንዘብን የማግኘት ችሎታ አለኝ። ስለዚህ የአብን ፈቃድ ለመፈጸም የሚበቃ ገንዘብና አቅርቦት አውጃለሁ።</p>
+    <p>በሰውነቴ ጤናንና ሙሉነትን የማግኘት ችሎታ አለኝ፤ ስለዚህ በመላ ህልውናዬ ላይ ጤናንና ሙሉነትን አውጃለሁ።</p>
+    <p>መለኮታዊ እውቀትን የማግኘት ችሎታ አለኝ፤ ስለዚህ በአእምሮዬ ላይ መለኮታዊ እውቀትን አውጃለሁ። በሰዎች ሁኔታ ላይ እውቀት፣ በሕይወቴ ላይ ለመውረርና ለማደናገር የሚሞክሩ ምሽግ መሰል ሐይሎችን የመለየት መለኮታዊ ማስተዋል አለኝ።</p>
+    <p>ከቅዱስ መንፈስ የሚመጣ መለኮታዊ ማስተዋል፣ መረጃና መለየት አለኝ፤ ምክንያቱም በሰማያዊ ስፍራዎች ተቀምጫለሁና።</p>
+  </div>
+</section>
+
+<section class="page">
+  <p class="tag">አራት</p>
+  <h3 class="heading display">ንጉሣዊ ካህናት</h3>
+  <div class="lines">
+    <p>ንጉሣዊ ካህን ነኝ።</p>
+    <p>ይህም በኢየሱስ ስም ሥልጣን እንዳለኝ ያሳያል። የዳንኩ ብቻ አይደለሁም፤ ነገር ግን በመንፈሳዊው ዓለም ላሉ ነገሮች በምድር ላይ እንዲደረጉ የሚያስችለኝ መለኮታዊ ኃይል አለኝ።</p>
+    <p>ቀደም ሲል የተለማመድኩት በስሜቶቼ፣ በሁኔታዎቼ፣ በሚሰማኝ ነገር፣ በእጥረቴ፣ በጤናዬ፣ በጭንቀት፣ በአጋንንታዊ ጥቃት፣ ሰዎች በመለየታቸው እና ዕድሎች ባለመስራታቸው ላይ መመስረት ቢሆንም፣ ከእንግዲህ በእነዚህ አልታወቅም፤ ምክንያቱም ንጉሣዊ ካህን፣ ከክርስቶስ ጋር ወራሽ እና አዲስ ፍጥረት ነኝና።</p>
+    <p>ስለዚህ በምድር ላይ ያለኝ ሕይወት ከበፊቱ በእጅጉ የተለየ ይመስላል።</p>
+  </div>
+</section>
+
+<section class="page">
+  <p class="tag">አምስት</p>
+  <h3 class="heading display">የክርስቶስ አእምሮ</h3>
+  <div class="lines">
+    <p>በኢየሱስ ስም የራሴን አእምሮ አወልቃለሁ፤ የክርስቶስንም አእምሮ እለብሳለሁ።</p>
+    <p>የክርስቶስ አእምሮ አለን።</p>
+    <p>ከእንግዲህ ከእግዚአብሔር ለመስማት እንደማልታገል አሁን አውጃለሁ፤ ምክንያቱም የክርስቶስ አእምሮ ከጌታ ለመስማት አይታገልምና።</p>
+    <p>በትንቢታዊ እውቀት አልታገልም፤ ምክንያቱም የክርስቶስ አእምሮ በትንቢታዊ እውቀት አይታገልምና።</p>
+    <p>ስለዚህ ሥጋዊ አእምሮዬን አወልቃለሁ፤ ከሰውነቴ እለየዋለሁ፤ የክርስቶስን ጻድቅ፣ ክብራዊ እና ንጹህ አእምሮ እለብሳለሁ።</p>
+    <p class="tight">አብ ሲያየኝ ንጽህናን ያያል።</p>
+    <p>አብ ሲያየኝ ልጁን ያያል።</p>
+    <p>ስለዚህ አሁን በኢየሱስ ስም የክርስቶስን አእምሮ እለብሳለሁ።</p>
+  </div>
+</section>
+
+<section class="page">
+  <p class="tag">ስድስት</p>
+  <h3 class="heading display">እግዚአብሔርን መስማት</h3>
+  <div class="lines">
+    <p class="tight">ቅዱስ መንፈስን መስማት እንደምችል አውጃለሁ።</p>
+    <p class="tight">የአብን ድምፅ መስማት እችላለሁ።</p>
+    <p class="tight">የኢየሱስን ድምፅ መስማት እችላለሁ።</p>
+    <p class="tight">ባህሪያቸውን ማስተዋል እችላለሁ።</p>
+    <p>የእያንዳንዳቸውን ልዩ ማንነት ማስተዋል እችላለሁ።</p>
+    <p>ምክንያቱም ከእንግዲህ የሚነሱት የራሴ ሐሳቦች አይደሉም፤ በአእምሮዬ የሚናገሩት የእግዚአብሔር ሐሳቦችና ድምፅ ናቸው እንጂ የራሴ ሐሳቦች አይደሉም።</p>
+    <p>አዲስ ፍጥረት ነኝ፤ ዛሬ በዚያ ኃይልና ሥልጣን እንደምመላለስ አውጃለሁ።</p>
+    <p>አእምሯችንንና ልባችንን የሚያፍኑ፣ ያለፈ ኃጢአት፣ ያለፈ ቁስልና ያለፈ ዑደቶችን በማስታወስ የሚያሰቃዩንን ማናቸውንም አለቅነቶች ግዛትና ኃይል እንይዛለን።</p>
+    <p>በመንፈስ ይህን እንይዛለን፤ በኢየሱስ እግር ሥር እናስገዛዋለን፤ በኢየሱስ ስም ነፃነትንና መዳንን እናውጃለን።</p>
+  </div>
+</section>
+
+<section class="page">
+  <p class="tag">መደምደሚያ</p>
+  <h3 class="heading display">ፍጻሜ</h3>
+  <div class="lines">
+    <p>በመንፈስ በክርስቶስ ማን እንደሆንን የሚቃወሙ ማናቸውንም ሥጋዊ ምክንያታዊ ክርክሮችን አፈርሳለሁ።</p>
+    <p>በኃይልና በሥልጣን በመመላለስ የምክንያታዊነት አወቃቀሮችን አፈርሳለሁ።</p>
+    <p>ሕይወት ምንም እንኳ ያልተረጋገጠ ቢመስልም፣ ኢየሱስ እንደ ሞተና እንደ ተነሳ፣ ደሙም ዛሬ በየደቂቃው ህልውናዬን ሙሉ በሙሉ እንደሚያጥብ በእርግጠኝነት እመላለሳለሁ።</p>
+    <p>ስሜቶቼን፣ የሚሰማኝን ነገር፣ የጥርጣሬ ደመናን፣ የፍርሃት ጭጋግን በኢየሱስ እግር ሥር አስገዛለሁ፤ ከእንግዲህ ከዚያ አስተሳሰብ እንዳልኖር አሁን እመርጣለሁ።</p>
+    <p>በናዝሬቱ ኢየሱስ ክርስቶስ ስም፣ ሰውነቴና ነፍሴ ለአዲሱ ተፈጥሮዬ እንዲነቁ እና ለቀኑ ቀሪ ጊዜ በዚያ ኃይልና ሥልጣን እንዲመላለሱ አዝዛለሁ።</p>
+  </div>
+</section>
+
+<div class="amen-final">
+  <p class="display">በኢየሱስ ስም፣ አሜን</p>
+  <span>IN JESUS NAME · AMEN</span>
+</div>
+
+<footer>2ኛ ቆሮንቶስ 5፥17 ላይ የተመሰረተ የጥዋት መግለጫ</footer>
+
+<script>
+  const pages = document.querySelectorAll('section.page');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.2 });
+  pages.forEach(p => observer.observe(p));
+</script>
+
+</body>
+</html>
